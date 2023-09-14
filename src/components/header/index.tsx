@@ -14,7 +14,7 @@ export function Header() {
     <header className="py-8 px-4 border-b-2">
       <div className="flex flex-row justify-between">
         <div className="flex flex-row gap-4 items-center">
-          <h1 className="text-xl font-semibold">Task management</h1>
+          <h1 className="text-xl font-semibold">Notes</h1>
           <div className="flex flex-row gap-3 items-center">
             <Input
               id="search_bar"
