@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 
 export function Header() {
   const { setTheme, theme } = useTheme();
+  const user = "Paulo"
   return (
     <header className="py-8 px-4 border-b-2">
       <div className="flex flex-row justify-between">
@@ -26,6 +27,15 @@ export function Header() {
           </div>
         </div>
         <div className="flex flex-row items-center gap-5">
+          <h1 className="font-bold text-lg">Paulo</h1>
+          <Avatar
+            className="cursor-pointer h-12 w-12 hover:opacity-75"
+          >
+            <AvatarImage />
+            <AvatarFallback>
+              {user[0]}
+            </AvatarFallback>
+          </Avatar>
           <Button
             className="rounded-full h-12 w-12"
             variant={"outline"}
@@ -35,15 +45,6 @@ export function Header() {
           >
             {theme === "dark" ? <Moon /> : <Sun />}
           </Button>
-          <h1 className="font-bold text-lg">Paulo</h1>
-          <Avatar
-            className="cursor-pointer h-12 w-12 hover:opacity-75"
-          >
-            <AvatarImage />
-            <AvatarFallback className="bg-slate-500">
-              {/* <Image alt="" src="https://cdn-icons-png.flaticon.com/512/666/666201.png" /> */}
-            </AvatarFallback>
-          </Avatar>
         </div>
       </div>
     </header>
