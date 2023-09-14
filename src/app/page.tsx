@@ -1,14 +1,5 @@
-import { Pen } from "lucide-react";
 import { Header } from "../components/header";
 import { Sidebar } from "../components/sidebar";
-import { Button } from "../components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
 import { NoteCard } from "../components/noteCard";
 
 export default function Home() {
