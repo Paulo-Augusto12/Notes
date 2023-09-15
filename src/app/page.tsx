@@ -19,7 +19,7 @@ export default async function Home() {
         <Sidebar />
         <div className="flex flex-wrap flex-row justify-start items-start gap-4 px-4 py-8">
           {response.notes.map(({description, title}) => (
-            <NoteCard />
+            <NoteCard description={description} title={title}/>
           ))}
         </div>
       </div>
