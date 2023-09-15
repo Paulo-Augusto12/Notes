@@ -4,7 +4,6 @@ import { Moon, Search, Sun } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import Image from "next/image";
 import { useTheme } from "next-themes";
 
 export function Header() {
