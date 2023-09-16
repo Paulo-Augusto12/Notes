@@ -1,37 +1,15 @@
-"use client";
-
-import { Moon, Search, Sun } from "lucide-react";
-import { useSearchParams } from "next/navigation";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useState } from "react";
+import { ToggleTheme } from "../toggleTheme";
+import { SearchBar } from "../searchBar";
 
 export function Header() {
-  const { setTheme, theme } = useTheme();
   const user = "Paulo";
-  const [search, setSearch] = useState<string>("");
-  const searchparams = useSearchParams();
   return (
     <header className="py-8 px-4 border-b-2">
       <div className="flex flex-row justify-between">
         <div className="flex flex-row gap-4 items-center">
           <h1 className="text-xl font-semibold">Notes</h1>
-          <div className="flex flex-row gap-3 items-center">
-            <Input
-              id="search_bar"
-              placeholder="Search"
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-            />
-            <Button variant="outline">
-              <Search />
-            </Button>
-          </div>
+          <SearchBar />
         </div>
         <div className="flex flex-row items-center gap-5">
           <h1 className="font-bold text-lg">Paulo</h1>
@@ -39,15 +17,8 @@ export function Header() {
             <AvatarImage />
             <AvatarFallback>{user[0]}</AvatarFallback>
           </Avatar>
-          <Button
-            className="rounded-full h-12 w-12"
-            variant={"outline"}
-            onClick={() => {
-              setTheme(theme === "dark" ? "light" : "dark");
-            }}
-          >
-            {theme === "dark" ? <Moon /> : <Sun />}
-          </Button>
+          <ToggleTheme />
+        </div>
         </div>
       </div>
     </header>
