@@ -20,7 +20,6 @@ export function Header() {
           <ToggleTheme />
         </div>
         </div>
-      </div>
     </header>
   );
 }
