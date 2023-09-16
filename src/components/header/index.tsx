@@ -1,15 +1,19 @@
 "use client";
 
 import { Moon, Search, Sun } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useState } from "react";
 
 export function Header() {
   const { setTheme, theme } = useTheme();
-  const user = "Paulo"
+  const user = "Paulo";
+  const [search, setSearch] = useState<string>("");
+  const searchparams = useSearchParams();
   return (
     <header className="py-8 px-4 border-b-2">
       <div className="flex flex-row justify-between">
@@ -19,7 +23,10 @@ export function Header() {
             <Input
               id="search_bar"
               placeholder="Search"
-              className="outline-none"
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
             />
             <Button variant="outline">
               <Search />
@@ -28,13 +35,9 @@ export function Header() {
         </div>
         <div className="flex flex-row items-center gap-5">
           <h1 className="font-bold text-lg">Paulo</h1>
-          <Avatar
-            className="cursor-pointer h-12 w-12 hover:opacity-75"
-          >
+          <Avatar className="cursor-pointer h-12 w-12 hover:opacity-75">
             <AvatarImage />
-            <AvatarFallback>
-              {user[0]}
-            </AvatarFallback>
+            <AvatarFallback>{user[0]}</AvatarFallback>
           </Avatar>
           <Button
             className="rounded-full h-12 w-12"
