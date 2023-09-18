@@ -1,6 +1,6 @@
-export async function HttpService<T>(url: string, body: any) {
-  const route = `http://localhost:3000/api${url}`;
-  const response = await fetch(`http://localhost:3000/api${url}`);
+export async function HttpService<T>(url: string, config?: RequestInit) {
+  const route = `${process.env.API_BASE_URL}${url}`;
+  const response = await fetch(route, config);
 
   if (!response.ok) {
     throw new Error(response.statusText);

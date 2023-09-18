@@ -10,7 +10,7 @@ type x = {
   }[];
 };
 export default async function Home() {
-  const response = await HttpService<x>("/getnotes", {});
+  const response = await HttpService<x>("/getnotes", { cache: "no-cache" });
 
   return (
     <main className="flex flex-col min-h-screen">
@@ -18,8 +18,8 @@ export default async function Home() {
       <div className="flex flex-1 flex-row">
         <Sidebar />
         <div className="flex flex-wrap flex-row justify-start items-start gap-4 px-4 py-8">
-          {response.notes.map(({description, title}) => (
-            <NoteCard description={description} title={title}/>
+          {response.notes.map(({ description, title }) => (
+            <NoteCard description={description} title={title} />
           ))}
         </div>
       </div>
