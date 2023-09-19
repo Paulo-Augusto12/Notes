@@ -13,7 +13,7 @@ import { Textarea } from "../../components/ui/textarea";
 import { Form } from "./components/form";
 import Link from "next/link";
 
-export default function Add() {
+export default async function Add() {
   return (
     <div className="w-full px-4 py-8 flex flex-col space-y-6">
       <Card className="min-h-[100px]">
@@ -27,7 +27,7 @@ export default function Add() {
           <CardContent className="flex flex-col space-y-8">
             <div>
               <Label htmlFor="title">Título</Label>
-              <Input id="title" name="title" />
+              <Input id="title" name="title" required/>
             </div>
             <div>
               <Label htmlFor="content">Conteúdo</Label>
@@ -35,6 +35,7 @@ export default function Add() {
                 id="content"
                 className="min-h-[250px] resize-none"
                 name="content"
+                required
               />
               <span className="text-muted-foreground">
                 O campo acima possui suporte a{" "}
