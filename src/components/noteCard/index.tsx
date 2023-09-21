@@ -16,7 +16,7 @@ export function NoteCard({ description, title }: INoteCardProps) {
   const x = new Date();
   const date = `${x.getDate()}/0${x.getMonth() + 1}/${x.getFullYear()}`;
   return (
-    <Card className="max-w-[30%] h-96 flex flex-col justify-between">
+    <Card className="min-w-[385px] h-96 flex flex-col justify-between">
       <div className="max-h-[55%]">
         <CardHeader>
           <CardTitle>{title}</CardTitle>

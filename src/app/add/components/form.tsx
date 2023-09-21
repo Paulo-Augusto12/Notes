@@ -14,10 +14,12 @@ export function Form({ children }: IFormProps) {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    const body = { title: formData.get('title'), description: formData.get('content') }
+    console.log(body)
     try {
       await HttpService("/addnote", {
         method: "POST",
-        body: formData,
+        body: JSON.stringify(body),
         cache: "no-cache",
       });
 

@@ -1,17 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
+import prisma from "../../../db/client";
 
 export async function GET(req: Request) {
-  const notes = [
-    {
-      title: "olá next",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra tempus tempus. Suspendisse vitae velit a ex laoreet pharetra et quis elit. Proin lobortis erat orci, in pellentesque felis pulvinar quis. ",
-    },
-    {
-      title: "olá next",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra tempus tempus. Suspendisse vitae velit a ex laoreet pharetra et quis elit. Proin lobortis erat orci, in pellentesque felis pulvinar quis. ",
-    },
-  ];
+  const notes = await prisma.note.findMany()
+ 
   return NextResponse.json({ notes }, { status: 200 });
 }
