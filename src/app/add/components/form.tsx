@@ -10,12 +10,12 @@ interface IFormProps {
 }
 export function Form({ children }: IFormProps) {
   const { toast } = useToast();
-  const { back } = useRouter()
+  const { back, prefetch } = useRouter()
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const body = { title: formData.get('title'), description: formData.get('content') }
-    console.log(body)
+    
     try {
       await HttpService("/addnote", {
         method: "POST",
@@ -28,6 +28,7 @@ export function Form({ children }: IFormProps) {
         description:
           "você será redirecionado para a sua lista de novas para conferir sua nova anotação",
       });
+      prefetch('/')
       back()
     } catch (err) {
       toast({

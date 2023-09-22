@@ -49,7 +49,7 @@ export default async function Add() {
 
             <CardFooter className="flex justify-end gap-2">
               <Button type="submit">Adicionar</Button>
-              <Link href={"/"}>
+              <Link href={"/"} prefetch>
                 <Button variant={"secondary"} type="reset">
                   Cancelar
                 </Button>

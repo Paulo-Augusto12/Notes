@@ -3,6 +3,7 @@ import prisma from "../../../db/client";
 
 export async function GET(req: Request) {
   const notes = await prisma.note.findMany()
- 
+  
+  console.log('a rota foi chamada', notes)
   return NextResponse.json({ notes }, { status: 200 });
 }
