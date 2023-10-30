@@ -7,12 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import Link from "next/link";
 
 interface INoteCardProps {
   description: string;
   title: string;
+  id: string,
+  createdAt: string
 }
-export function NoteCard({ description, title }: INoteCardProps) {
+export function NoteCard({ description, title, createdAt, id }: INoteCardProps) {
   const x = new Date();
   const date = `${x.getDate()}/0${x.getMonth() + 1}/${x.getFullYear()}`;
   return (
@@ -26,10 +29,12 @@ export function NoteCard({ description, title }: INoteCardProps) {
         </CardContent>
       </div>
       <CardFooter className="pt-4 flex justify-between items-center">
-        <p>{date}</p>
+        <p>{createdAt}</p>
+        <Link href={`/posts/${id}`}>
         <Button className="rounded-full w-14 h-14" variant="outline">
           <Pen />
         </Button>
+        </Link>
       </CardFooter>
     </Card>
   );

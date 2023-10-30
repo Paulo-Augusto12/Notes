@@ -6,6 +6,8 @@ type x = {
   notes: {
     title: string;
     description: string;
+    id: string,
+    createdAt: string
   }[];
 };
 
@@ -16,8 +18,8 @@ export default async function Home() {
     <>
       {response.notes.length ? (
         <div className="grid grid-cols-4 gap-4 px-4 py-8">
-          {response.notes.map(({ description, title }) => (
-            <NoteCard description={description} title={title} />
+          {response.notes.map(({ description, title, createdAt, id }) => (
+            <NoteCard description={description} title={title} createdAt={createdAt} id={id}/>
           ))}
         </div>
       ) : (

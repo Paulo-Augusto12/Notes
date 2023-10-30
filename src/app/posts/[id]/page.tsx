@@ -1,10 +1,18 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import { Textarea } from "../../../components/ui/textarea";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import { Form } from "../components/Form";
 import { Label } from "../../../components/ui/label";
+import { HttpService } from "../../../services/http/httpService";
 
 type Params = {
   params: {
@@ -12,7 +20,15 @@ type Params = {
   };
 };
 
-export default function Post({ params }: Params) {
+type note = {
+  title: string,
+  description: string
+}
+export default async function Post({ params }: Params) {
+  const response = await HttpService<note>("/getanote", {
+    body: JSON.stringify(params),
+    
+  });
   return (
     <div className="w-full px-4 py-8 flex flex-col space-y-6">
       <Card className="min-h-[100px]">
@@ -26,7 +42,7 @@ export default function Post({ params }: Params) {
           <CardContent className="flex flex-col space-y-8">
             <div>
               <Label htmlFor="title">Título</Label>
-              <Input id="title" name="title" required/>
+              <Input id="title" name="title" required value={response.title} />
             </div>
             <div>
               <Label htmlFor="content">Conteúdo</Label>
